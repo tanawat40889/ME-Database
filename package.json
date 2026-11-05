@@ -1,0 +1,37 @@
+{
+  "name": "tg-vault",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w web && npm run build -w server",
+    "start": "npm run start -w server",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
+    "test": "npm run test -w server && npm run test -w web",
+    "login": "npm run login -w server",
+    "whoami": "npm run whoami -w server",
+    "list-chats": "npm run list-chats -w server",
+    "hash-password": "npm run hash-password -w server",
+    "watch": "npm run watch -w server",
+    "scan": "npm run scan -w server",
+    "dev:mock": "npm run dev:mock -w web"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1"
+  }
+}

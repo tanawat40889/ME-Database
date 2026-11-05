@@ -1,0 +1,18 @@
+services:
+  tg-vault:
+    build: .
+    init: true
+    restart: unless-stopped
+    env_file: .env # secrets stay out of the image
+    environment:
+      DATA_DIR: /data
+      PORT: 8080
+    # loopback only: put HTTPS in front (Cloudflare Tunnel, Caddy, nginx…) and set TRUST_PROXY=1
+    ports:
+      - '127.0.0.1:8080:8080'
+    volumes:
+      - tg-vault-data:/data # index snapshot + thumbnails (only a cache, safe to delete)
+    stop_grace_period: 20s
+
+volumes:
+  tg-vault-data:
